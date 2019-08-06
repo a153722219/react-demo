@@ -5,6 +5,7 @@
  */
 
 import React, { Component } from 'react';
+import RootSiblings from 'react-native-root-siblings';
 import {
   Platform,
   StyleSheet,
@@ -12,8 +13,21 @@ import {
   View,
   Button,
 } from 'react-native';
-type Props ={}
-export default class HomePage extends Component<Props> {
+
+
+var id = 0;
+var elements = [];
+
+export default class HomePage extends Component {
+  addSibling = () => {
+    let sibling = new RootSiblings(<View
+    >
+        <Text>I`m No.{id}</Text>
+    </View>);
+    id++;
+    elements.push(sibling);
+};
+
 
   render() {
     const navigation = this.props.navigation;
@@ -58,6 +72,8 @@ export default class HomePage extends Component<Props> {
           <Button title="go SectionLists" onPress={()=>{
             navigation.navigate('SectionLists');
         }}/>
+
+        <Button title="添加根组件" onPress={ this.addSibling }/>
       </View>
     );
   }
