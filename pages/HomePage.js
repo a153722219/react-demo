@@ -26,7 +26,7 @@ export default class HomePage extends Component {
     </View>);
     id++;
     elements.push(sibling);
-};
+  };
 
 
   render() {
